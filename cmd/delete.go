@@ -65,7 +65,7 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 	confirm = strings.TrimSpace(strings.ToLower(confirm))
 
 	if !(strings.ToLower(confirm) == "yes" || strings.ToLower(confirm) == "y") {
-		fmt.Println("Deletion cancelled")
+		fmt.Println("Deletion cancelled!")
 		return
 	}
 
