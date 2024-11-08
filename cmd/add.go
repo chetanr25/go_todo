@@ -17,7 +17,7 @@ func AddToList(cmd *cobra.Command, args []string) {
 		ID:        newID,
 		Title:     newTitle,
 		Done:      false,
-		DateAdded: time.Now().Format("2006-01-02"),
+		DateAdded: time.Now().Format("2006-01-02 Monday 15:04:05"),
 	}
 
 	err := utils.WriteToCSV(newItem)
