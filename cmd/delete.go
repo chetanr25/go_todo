@@ -27,6 +27,11 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 	var todoList []models.TodoItem
 	utils.LoadDataFromCSV(&todoList)
 
+	if len(todoList) == 0 {
+		fmt.Println("No todo items found")
+		return
+	}
+
 	var itemToDelete models.TodoItem
 	var found bool
 	for _, item := range todoList {
@@ -50,7 +55,7 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 	response, _ := reader.ReadString('\n')
 	response = strings.TrimSpace(strings.ToLower(response))
 
-	if !(response == "yes" || response == "y") {
+	if !(strings.ToLower(response) == "yes" || strings.ToLower(response) == "y") {
 		fmt.Println("Task not completed. Deletion cancelled.")
 		return
 	}
@@ -59,12 +64,11 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 	confirm, _ := reader.ReadString('\n')
 	confirm = strings.TrimSpace(strings.ToLower(confirm))
 
-	if !(confirm == "yes" || confirm == "y") {
-		fmt.Println("Deletion cancelled")
+	if !(strings.ToLower(confirm) == "yes" || strings.ToLower(confirm) == "y") {
+		fmt.Println("Deletion cancelled!")
 		return
 	}
 
-	// Filter out the item to delete
 	var newList []models.TodoItem
 	for _, item := range todoList {
 		if item.ID != id {
@@ -82,7 +86,7 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 }
 
 var DeleteCmd = &cobra.Command{
-	Use:   "delete",
+	Use:   "delete [ID]",
 	Short: "Delete a todo item by ID",
 	Run:   DeleteItem,
 }
