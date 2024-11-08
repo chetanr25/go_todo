@@ -82,7 +82,7 @@ func DeleteItem(cmd *cobra.Command, args []string) {
 }
 
 var DeleteCmd = &cobra.Command{
-	Use:   "delete",
+	Use:   "delete [ID]",
 	Short: "Delete a todo item by ID",
 	Run:   DeleteItem,
 }

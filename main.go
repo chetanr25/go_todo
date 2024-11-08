@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	var rootCmd = &cobra.Command{Use: "todo"}
+	var rootCmd = &cobra.Command{Use: "todo",
+		Short: "Todo is a CLI task manager", Long: `A simple command-line todo list application built with Go.`}
 	rootCmd.AddCommand(commands.ListCmd)
 	rootCmd.AddCommand(commands.AddCmd)
 	rootCmd.AddCommand(commands.DeleteCmd)

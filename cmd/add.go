@@ -30,7 +30,7 @@ func AddToList(cmd *cobra.Command, args []string) {
 }
 
 var AddCmd = &cobra.Command{
-	Use:   "add",
+	Use:   "add [title]",
 	Short: "Add a new todo item",
 	Args:  cobra.MinimumNArgs(1),
 	Run:   AddToList,
